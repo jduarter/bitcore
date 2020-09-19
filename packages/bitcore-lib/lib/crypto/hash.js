@@ -9,7 +9,7 @@ var Hash = module.exports;
 Hash.sha1 = function(buf) {
   $.checkArgument(BufferUtil.isBuffer(buf));
   // return crypto.createHash('sha1').update(buf).digest();
-  return crypto.SHA1(buf);
+  return crypto.SHA1(buf.toString());
 };
 
 Hash.sha1.blocksize = 512;
@@ -22,7 +22,7 @@ Hash.sha256 = function(buf) {
     .update(buf)
     .digest();
 */
-  return crypto.SHA256(buf);
+  return crypto.SHA256(buf.toString());
 };
 
 Hash.sha256.blocksize = 512;
@@ -30,7 +30,7 @@ Hash.sha256.blocksize = 512;
 Hash.sha256sha256 = function(buf) {
   $.checkArgument(BufferUtil.isBuffer(buf));
   //  return Hash.sha256(Hash.sha256(buf));
-  return crypto.SHA256(crypto.SHA256(buf));
+  return crypto.SHA256(crypto.SHA256(buf.toString()));
 };
 
 Hash.ripemd160 = function(buf) {
@@ -41,13 +41,13 @@ Hash.ripemd160 = function(buf) {
     .update(buf)
     .digest();
     */
-  return crypto.RIPEMD160(buf);
+  return crypto.RIPEMD160(buf.toString());
 };
 
 Hash.sha256ripemd160 = function(buf) {
   $.checkArgument(BufferUtil.isBuffer(buf));
   // return Hash.ripemd160(Hash.sha256(buf));
-  return crypto.RIPEMD160(crypto.SHA256(buf));
+  return crypto.RIPEMD160(crypto.SHA256(buf.toString()));
 };
 
 Hash.sha512 = function(buf) {
@@ -58,7 +58,7 @@ Hash.sha512 = function(buf) {
     .update(buf)
     .digest();
     */
-  return crypto.SHA512(buf);
+  return crypto.SHA512(buf.toString());
 };
 
 Hash.sha512.blocksize = 1024;
